@@ -1,10 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import {useState , useEffect} from 'react';
+import {Audio} from 'expo-av';
+
 
 export default function App() {
+
+  const [permission, setPermission] = useState(null);
+
+
+
+  useEffect( () => {
+    (async () => {
+      const {status} = await Audio.requestPermissionsAsync();
+      setPermission(status === 'granted');
+    }) ();          }, [] 
+  );
+  
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Text>{permission === null
+            ? "Requesting Permission..."
+            : permission
+            ? "Microphone Acess Granted"
+            : "Permission Denied"}
+       </Text>
       <StatusBar style="auto" />
     </View>
   );
