@@ -8,7 +8,7 @@ As a user, I want to hear the note in tune so I can match that with my own instr
  - Measurable: Users should be able to hear the note in tuner clearly through their headphones
  - Achievable: Uses Phone audio output function
  - Relevant: Enables users to play along with the note they are hearing, to help with tuning
- - Timebox: This should be implemented in week ?
+ - Timebox: This should be implemented in phase 2
 
 ------------------------------------------------------------
 
