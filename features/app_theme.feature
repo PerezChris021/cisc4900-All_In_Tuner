@@ -2,7 +2,8 @@ Feature: App theme
 
 Users can chose the option to chose a light theme or dark theme for the visual apperance of the app.
 
-As a user, I want to have the option to change app theme from light to dark or dark to light.
+As a user, I want to have the option to change app theme from light to dark or dark to light, so there can be a level of 
+customization that would make me use the app more or be better for my eyes visually.
 
  - Specific: Users have the option to change app's theme
  - Measurable: Users should be able to change app's theme with the click of a button
