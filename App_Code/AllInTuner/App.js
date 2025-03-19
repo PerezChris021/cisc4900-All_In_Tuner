@@ -1,9 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
+/*
+
 import { StyleSheet, Text, View } from 'react-native';
 import {useState , useEffect} from 'react';
 import {Audio} from 'expo-av';
+*/
+
+import React from 'react';
+import TunerScreen from '../screens/tunerScreen';
 
 
+export default function App(){
+  return <TunerScreen/>;
+};
+/*
 export default function App() {
 
   const [permission, setPermission] = useState(null);
@@ -13,8 +22,8 @@ export default function App() {
   useEffect( () => {
     (async () => {
       const {status} = await Audio.requestPermissionsAsync();
-      setPermission(status === 'granted');
-    }) ();          }, [] 
+      setPermission(status === 'granted');}
+    ) ();          }, [] 
   );
   
   return (
@@ -38,3 +47,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+
+
+*/
