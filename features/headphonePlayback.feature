@@ -2,7 +2,8 @@ Feature: HeadPhone Playback
 
 Users can play a note and hear that note be played back at them through their headphones.
 
-As a user, I want to hear the note in tune so I can match that with my own instrument and play along.
+As a user, I want to play a note on my instrument and have the app play that same note back to me but in tune, 
+so I can match that with my own instrument and play along, it will help with playing in tune.
 
  - Specific: Users can use headphones to hear the note being played in tune
  - Measurable: Users should be able to hear the note in tuner clearly through their headphones
