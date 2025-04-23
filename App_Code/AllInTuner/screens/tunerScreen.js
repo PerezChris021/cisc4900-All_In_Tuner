@@ -1,32 +1,68 @@
-import { useState} from "react";
-import {View, Text, Button, StyleSheet} from "react-native";
-import { useRecorder } from "../components/AudioRecorder";
-import { analyzePitch } from "../components/PitchDetection";
+import React from "react";
+import { View, Alert, Button, StyleSheet, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-export default function TunerScreen () {
-    const [note, setNote] = useState("");
-    const [status, setStatus] = useState("");
-    const {permission, startRecording, stopRecording} = useRecorder(async (audioBuffer) =>{
-        const results =await analyzePitch(audioBuffer, 44100);
-        setNote(results.note);
-        setStatus(results.status);
-    });
-    return (
-        <View style={style.container}>
-            <Text style={style.text}>
-                {permission ? "Microphone Acess Granted": "Requesting Permission..."}
-            </Text>
-            <Text style={styles.note}>Note: {note}</Text>
-            <Text style={styles.status}>{status}</Text>
-            <Button title="Start Tuning" onPress={startRecording} />
-            <Button title="Stop Tuning" onPress={stopRecording} />
+export default function TunerScreen() {
+  return (
+    <SafeAreaView style={styles.screen}>
+      {/* Header buttons */}
+      <View style={styles.header}>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Instrument"
+            color="black"
+            onPress={() => {
+              Alert.alert("Will show instruments options");
+            }}
+          />
         </View>
-    );
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Metronome"
+            color="black"
+            onPress={() => {
+              Alert.alert("Will play the metronome from the tuner page");
+            }}
+          />
+        </View>
+      </View>
+
+      {/* Tuner display */}
+      <View style={styles.tunerContainer}>
+        <Text style={styles.tunerText}>🎵 Tuner Placeholder 🎵</Text>
+        <Text style={styles.tunerSubtext}>
+          (Pitch detection logic goes here)
+        </Text>
+      </View>
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
-        container: { flex: 1, alignItems:"center", justtifyContent:"center"},
-        text: {fontSize: 20},
-        note: {fontSize:30, fontWeight:"bold"},
-        status: {fontSize:20, marginTop:10}    
+  screen: {
+    flex: 1,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    paddingHorizontal: 20,
+    paddingTop: 10,
+  },
+  buttonContainer: {
+    width: "45%",
+  },
+  tunerContainer: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  tunerText: {
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  tunerSubtext: {
+    fontSize: 14,
+    color: "gray",
+    marginTop: 10,
+  },
 });

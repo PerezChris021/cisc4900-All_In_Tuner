@@ -1,42 +1,34 @@
-/*
-
-import { StyleSheet, Text, View } from 'react-native';
-import {useState , useEffect} from 'react';
-import {Audio} from 'expo-av';
-*/
-
 import React from 'react';
-import TunerScreen from '../screens/tunerScreen';
+import "react-native-gesture-handler";
+import { StyleSheet, Text, View} from 'react-native';
+import {useState , useEffect} from 'react';
+
+import {StatusBar} from "expo-status-bar";
+import Naviagtion from "./Navigation";
+import useMicrophonePermission from './components/MicrophonePermission';
 
 
-export default function App(){
-  return <TunerScreen/>;
-};
-/*
 export default function App() {
+  const hasMicrophonePermission = useMicrophonePermission();
 
-  const [permission, setPermission] = useState(null);
+  if (hasMicrophonePermission === null){
+      return(
+        <View style={styles.container}>
+          <Text>---Requesting Microphone Permission...---</Text>
+        </View>
+      );
+  }
+
+  if (hasMicrophonePermission === false){
+    return(
+      <View style={styles.container}>
+        <Text>---Microphone access denied. Please enable it in Settings. </Text>
+      </View>
+    );
+  }
 
 
-
-  useEffect( () => {
-    (async () => {
-      const {status} = await Audio.requestPermissionsAsync();
-      setPermission(status === 'granted');}
-    ) ();          }, [] 
-  );
-  
-  return (
-    <View style={styles.container}>
-      <Text>{permission === null
-            ? "Requesting Permission..."
-            : permission
-            ? "Microphone Acess Granted"
-            : "Permission Denied"}
-       </Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <Naviagtion />
 }
 
 const styles = StyleSheet.create({
@@ -48,5 +40,3 @@ const styles = StyleSheet.create({
   },
 });
 
-
-*/
