@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, Button, StyleSheet, Animated } from 'react-native';
 import { Audio } from 'expo-av';
 import Slider from '@react-native-community/slider';
+import { useTheme } from '../components/ThemeSelection';
 
 
 
@@ -9,6 +10,8 @@ import Slider from '@react-native-community/slider';
 
 
 const MetronomePage = () => {
+  const {theme} = useTheme();
+
   const [bpm, setBpm] = useState(60);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -82,7 +85,7 @@ const MetronomePage = () => {
   }, [bpm, isPlaying]);
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Text style={styles.title}>🎵 Metronome 🎵</Text>
       <Text style={styles.bpm}>{bpm} BPM</Text>
 

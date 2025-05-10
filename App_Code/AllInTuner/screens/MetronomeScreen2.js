@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, Button, StyleSheet, Animated, Modal, TouchableOpacity, FlatList } from 'react-native';
 import { Audio } from 'expo-av';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTheme } from '../components/ThemeSelection';
 
 const bpmOptions = [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150,
                    160, 170, 180,190, 200, 210, 220, 230, 240, 250,260,270, 280, 290, 300];
@@ -10,6 +11,7 @@ const bpmOptions = [20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150
 //---This is Select List Metronome Option---
 
 const MetronomePage = () => {
+  const {theme} = useTheme();
   const [bpm, setBpm] = useState(60);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showBpmModal, setShowBpmModal] = useState(false);
@@ -62,10 +64,10 @@ const MetronomePage = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Text style={styles.title}> 🎵 Metronome 🎵</Text>
 
-      <Text style={styles.bpm}>{bpm} BPM</Text>
+      <Text style={{color: theme.color, fontSize: theme.fontSize}}>{bpm} BPM</Text>
 
       <View style={styles.bpmControls}>
         <TouchableOpacity

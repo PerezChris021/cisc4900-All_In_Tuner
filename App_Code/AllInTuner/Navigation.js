@@ -11,6 +11,8 @@ import Feather from '@expo/vector-icons/Feather';
 import {Ionicon} from "@expo/vector-icons";
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import { MetronomeScreenProvider, useMetronomeScreen } from './screens/MetronomeScreenOption';
+import { ThemeProvider } from './components/ThemeSelection';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -65,10 +67,13 @@ function TabGroup(){
 export default function Navigation(){
 
     return (
+        //Added the <ThemeProvider tags>
+        <ThemeProvider>
         <MetronomeScreenProvider>
         <NavigationContainer>
             <TabGroup />
         </NavigationContainer>
         </MetronomeScreenProvider>
+        </ThemeProvider>
     )
 }

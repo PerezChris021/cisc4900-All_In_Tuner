@@ -2,14 +2,14 @@ import React from 'react';
 import "react-native-gesture-handler";
 import { StyleSheet, Text, View} from 'react-native';
 import {useState , useEffect} from 'react';
-
+import { Buffer } from 'buffer';
 import {StatusBar} from "expo-status-bar";
 import Naviagtion from "./Navigation";
 import useMicrophonePermission from './components/MicrophonePermission';
-
+global.Buffer = Buffer;
 
 export default function App() {
-  const hasMicrophonePermission = useMicrophonePermission();
+  /*const hasMicrophonePermission = useMicrophonePermission();
 
   if (hasMicrophonePermission === null){
       return(
@@ -26,7 +26,7 @@ export default function App() {
       </View>
     );
   }
-
+  */
 
   return <Naviagtion />
 }
